@@ -4,6 +4,13 @@ import NavBar from "./NavBar";
 
 function Home() {
     const [foodItems, setFoodItems] = useState([])
+    const [user, setUser] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/users")
+    .then((r) => r.json())
+    .then((user) => setUser(user))
+    },[])
 
     useEffect(() => {
         fetch("http://localhost:9292/")
