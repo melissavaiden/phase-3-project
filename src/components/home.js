@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import FoodCard from "./foodCard";
+import NavBar from "./NavBar";
 
 function Home() {
     const [foodItems, setFoodItems] = useState([])
@@ -14,6 +15,7 @@ function Home() {
     return (
     <div>   
          <h1>Home Chef</h1>
+         <NavBar />
          <FoodCard foodItems={foodItems}/>
     </div>
 )}
