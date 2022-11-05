@@ -1,12 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import FoodCard from "./foodCard";
 
 function Home() {
+    const [foodItems, setFoodItems] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/")
+    .then((r) => r.json())
+    .then((foodFromDB) => setFoodItems(foodFromDB))
+    },[])
+    console.log(foodItems)
 
     return (
     <div>   
          <h1>Home Chef</h1>
-         <FoodCard />
+         <FoodCard foodItems={foodItems}/>
     </div>
 )}
 
