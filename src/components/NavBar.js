@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
+import ReactDOM from "react-dom";
+import NavLink from "react-router-dom"
 
-function NavBar() {
+function NavBar({changeCategory}) {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -9,10 +11,13 @@ function NavBar() {
     .then((cat) => setCategories(cat))
     },[])
 
-    console.log(categories)
+    function handleClick(e) {
+        let catName = (e.target.innerHTML)
+        changeCategory(catName)
+    }
 
     let categoryNavButtons = categories.map((cat) => {
-       return <button>{cat}</button>
+       return <button onClick={handleClick} key={cat.id}>{cat}</button>
     })
 
     return (

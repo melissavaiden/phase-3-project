@@ -13,16 +13,21 @@ function Home() {
     },[])
 
     useEffect(() => {
-        fetch("http://localhost:9292/")
+        fetch("http://localhost:9292/food")
     .then((r) => r.json())
     .then((foodFromDB) => setFoodItems(foodFromDB))
     },[])
-    console.log(foodItems)
+
+    function changeCategory(category) {
+        fetch(`http://localhost:9292/food/${category}`)
+        .then((r) => r.json())
+        .then((foodFromDB) => setFoodItems(foodFromDB))
+    }
 
     return (
     <div>   
          <h1>Home Chef</h1>
-         <NavBar />
+         <NavBar changeCategory={changeCategory}/>
          <FoodCard foodItems={foodItems}/>
     </div>
 )}
