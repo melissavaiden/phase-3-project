@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import ReactDOM from "react-dom";
-import NavLink from "react-router-dom"
+import FoodCard from "./foodCard";
+import NavBar from "./NavBar";
 
-function FoodSelections({changeCategory}) {
+function FoodSelections({changeCategory, foodItems}) {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -16,13 +16,20 @@ function FoodSelections({changeCategory}) {
         changeCategory(catName)
     }
 
+    function displayAll() {
+        
+    }
+
     let categoryNavButtons = categories.map((cat) => {
        return <button onClick={handleClick} key={cat.id}>{cat}</button>
     })
 
     return (
         <div>
+            <NavBar /> 
+            <button onClick={displayAll}>All</button>
             {categoryNavButtons}
+            <FoodCard foodItems={foodItems}/>
         </div>
     )
 

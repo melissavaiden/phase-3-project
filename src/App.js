@@ -1,17 +1,43 @@
-import Home from './components/home';
+import Home from './components/homePage';
 import './App.css'
-import { Route, Routes, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import FoodSelections from './components/FoodSelections';
 
 function App() {
+  const [foodItems, setFoodItems] = useState([])
+  const [user, setUser] = useState([])
+
+
+  useEffect(() => {
+    fetch("http://localhost:9292/users")
+    .then((r) => r.json())
+    .then((user) => setUser(user))
+  },[])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/food")
+    .then((r) => r.json())
+    .then((foodFromDB) => setFoodItems(foodFromDB))
+  },[])
+
+  function changeCategory(category) {
+    fetch(`http://localhost:9292/food/${category}`)
+    .then((r) => r.json())
+    .then((foodFromDB) => setFoodItems(foodFromDB))
+}
+
+
+
   return (
     <Switch>
+      <Route path="/food/categories">
+        <FoodSelections changeCategory={changeCategory} foodItems={foodItems}/>
+      </Route>
       <Route path="/">
         <Home />
       </Route>
-      <Route path="/categories">
-        <FoodSelections />
-      </Route>
+  
     </Switch>
 
   );
