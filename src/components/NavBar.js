@@ -1,29 +1,12 @@
-import React, {useEffect, useState} from "react";
-import ReactDOM from "react-dom";
-import NavLink from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
-function NavBar({changeCategory}) {
-    const [categories, setCategories] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:9292/categories')
-    .then((r) => r.json())
-    .then((cat) => setCategories(cat))
-    },[])
-
-    function handleClick(e) {
-        let catName = (e.target.innerHTML)
-        changeCategory(catName)
-    }
-
-    let categoryNavButtons = categories.map((cat) => {
-       return <button onClick={handleClick} key={cat.id}>{cat}</button>
-    })
-
+function NavBar() {
     return (
         <div>
-            {categoryNavButtons}
-        </div>
+            <Link to='/'>Home</Link>
+            <Link to='/categories'>Food Categories</Link>
+        </div> 
     )
 
 }
