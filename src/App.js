@@ -10,7 +10,6 @@ function App() {
   const [foodItems, setFoodItems] = useState([])
   const [user, setUser] = useState([])
 
-
   useEffect(() => {
     fetch("http://localhost:9292/users")
     .then((r) => r.json())
@@ -39,7 +38,7 @@ function App() {
         <FoodSelections changeCategory={changeCategory} foodItems={foodItems}/>
       </Route>
       <Route  exact path="/foodform">
-        <FoodForm />
+        <FoodForm user={user}/>
       </Route>
       <Route path="/">
         <Home />
