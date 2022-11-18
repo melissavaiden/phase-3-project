@@ -6,6 +6,9 @@
 body {
   background-color: lightblue;
   text-align: center;
+  font-variant: normal;
+  text-transform: none;
+
 }
 
 .links {
@@ -17,18 +20,31 @@ body {
 }
 
 .catButton {
-    color: black; 
-    font-size: 15px; 
-    line-height: 19px; 
-    padding: 10px; 
-    border-radius: 50px; 
-    font-family: Georgia, serif; 
-    font-weight: normal; 
-    text-decoration: none; 
-    font-style: normal; 
-    font-variant: normal; 
-    text-transform: none; 
-    background: #F19CBB;
-    margin: 10px;
-  
+  color: black; 
+  font-size: 15px; 
+  line-height: 19px; 
+  padding: 10px; 
+  border-radius: 50px; 
+  font-family: Georgia, serif; 
+  text-decoration: none; 
+  background: #F19CBB;
+  margin: 10px;
+  letter-spacing: -0.6px;
+  word-spacing: 0.6px;
+  font-weight: 400;
+  text-decoration: underline solid rgb(68, 68, 68);
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none; 
   }
+
+.inputs {
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+}
+
+.description {
+  height: 100px;
+  width: 200px;
+}

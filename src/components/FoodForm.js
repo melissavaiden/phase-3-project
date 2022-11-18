@@ -33,34 +33,34 @@ function FoodForm({user}) {
                 <h1>Share your Food!</h1>
                 <label className='selection'>
                     Food Item Name:
-                    <input type='string' name='name' onChange={handleChange}></input>
+                    <input className='inputs' type='string' name='name' onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Price:
-                    <input type='number' name='price' onChange={handleChange}></input>
+                    <input className='inputs' type='number' name='price' onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Category:
-                    <input type='string' name='category' onChange={handleChange}></input>
+                    <input className='inputs' type='string' name='category' onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Description:
-                    <input type='string' name='description' onChange={handleChange}></input>
+                    <input className='inputs description' type='string' name='description' onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Username:
-                    <select name='username' className='selection'>
+                    <select name='username' className='inputs'>
                         {users}
                     </select>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Picture URL:
-                    <input type='url' name='picture_url' onChange={handleChange}></input>
+                    <input className='inputs' type='url' name='picture_url' onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <button type='submit'>Submit</button>
