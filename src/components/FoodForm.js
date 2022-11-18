@@ -14,7 +14,7 @@ function FoodForm({user, addFood}) {
     console.log(newFoodItem)
 
     const users = user.map((person) => {
-        return <option key={person.id} id={person.id}>{person.username}</option>
+        return <option key={person.id} value={person.id}>{person.username}</option>
     })
 
     function handleChange(e) {
@@ -25,6 +25,7 @@ function FoodForm({user, addFood}) {
     }
 
     function handleUserChange(e) {
+        console.log(e.target.value)
         setNewFoodItem({
             ...newFoodItem,
             [e.target.name] : e.target.value
