@@ -13,6 +13,8 @@ body {
 
 .links {
   margin: 20px;
+  background-color: lavender;
+  padding: 10px;
 }
 
 .navlink {

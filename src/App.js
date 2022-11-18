@@ -27,6 +27,10 @@ function App() {
     .then((foodFromDB) => setFoodItems(foodFromDB))
 }
 
+function handleAddFoodItem(newFoodItem) {
+  setFoodItems([...foodItems, newFoodItem])
+}
+
 
 
   return (
@@ -37,7 +41,7 @@ function App() {
         <FoodSelections changeCategory={changeCategory} foodItems={foodItems}/>
       </Route>
       <Route  exact path="/foodform">
-        <FoodForm user={user}/>
+        <FoodForm user={user} addFood={handleAddFoodItem}/>
       </Route>
       <Route path="/">
         <Home />

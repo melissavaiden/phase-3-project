@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function FoodForm({user}) {
+function FoodForm({user, addFood}) {
     const [newFoodItem, setNewFoodItem] = useState({
         id:"",
         name:"",
@@ -11,8 +11,10 @@ function FoodForm({user}) {
         pictureUrl:""
     })
 
+    console.log(newFoodItem)
+
     const users = user.map((person) => {
-        return <option key={person.id}>{person.username}</option>
+        return <option key={person.id} id={person.id}>{person.username}</option>
     })
 
     function handleChange(e) {
@@ -22,8 +24,30 @@ function FoodForm({user}) {
         })
     }
 
-    function handleSubmit() {
+    function handleUserChange(e) {
+        setNewFoodItem({
+            ...newFoodItem,
+            [e.target.name] : e.target.value
+        })
+    }
 
+    function handleSubmit() {
+        fetch("http://localhost:9292/food", {
+            method: "POST",
+           headers: {
+                "Content-Type": "application/json",
+               },
+           body: JSON.stringify({
+               "name" : newFoodItem.name,
+               "time" : newFoodItem.price,
+               "category" : newFoodItem.category,
+               "description" : newFoodItem.description,
+               "user_id" : newFoodItem.username,
+               "picture_url" : newFoodItem.pictureUrl
+           })
+        })
+        .then((r) => r.json())
+        .then((newFoodItem) => addFood(newFoodItem))
     }
     
     return (
@@ -53,7 +77,7 @@ function FoodForm({user}) {
                 <br></br>
                 <label className='selection'>
                     Username:
-                    <select name='username' className='inputs'>
+                    <select className='inputs' name='username' onChange={handleUserChange}>
                         {users}
                     </select>
                 </label>
