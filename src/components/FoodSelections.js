@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import FoodCard from "./foodCard";
-import NavBar from "./NavBar";
 
 function FoodSelections({changeCategory, foodItems}) {
     const [categories, setCategories] = useState([])
@@ -17,17 +16,17 @@ function FoodSelections({changeCategory, foodItems}) {
     }
 
     function displayAll() {
-        
+        changeCategory(0)
     }
 
+
     let categoryNavButtons = categories.map((cat) => {
-       return <button onClick={handleClick} key={cat.id}>{cat}</button>
+       return <button className="catButton" onClick={handleClick} key={cat.id}>{cat}</button>
     })
 
     return (
         <div>
-            <NavBar /> 
-            <button onClick={displayAll}>All</button>
+            <button className="catButton" onClick={displayAll}>All</button>
             {categoryNavButtons}
             <FoodCard foodItems={foodItems}/>
         </div>

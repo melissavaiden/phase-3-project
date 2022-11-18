@@ -1,5 +1,4 @@
 import Home from './components/homePage';
-import './App.css'
 import { Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FoodForm from './components/FoodForm';

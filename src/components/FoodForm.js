@@ -12,7 +12,7 @@ function FoodForm({user}) {
     })
 
     const users = user.map((person) => {
-        return <option>{person.username}</option>
+        return <option key={person.id}>{person.username}</option>
     })
 
     function handleChange(e) {

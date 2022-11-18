@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
     return (
         <div>
-            <ul>
-            <NavLink to='/'>Home</NavLink>
-            <NavLink to='/food/categories'>Food Categories</NavLink> 
-            <NavLink to='/foodform'>Add A Food Item</NavLink>
+            <ul className="links">
+            <NavLink className="navlink" to='/'>Home</NavLink>
+            <NavLink className="navlink" to='/food/categories'>Food Categories</NavLink> 
+            <NavLink className="navlink" to='/foodform'>Add A Food Item</NavLink>
             </ul>
         </div> 
     )
