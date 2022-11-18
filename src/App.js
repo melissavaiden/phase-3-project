@@ -35,6 +35,7 @@ function handleAddFoodItem(newFoodItem) {
 
   return (
   <>
+  <h1>Home Chef</h1>
   <NavBar />
     <Switch>
       <Route exact path="/food/categories">
