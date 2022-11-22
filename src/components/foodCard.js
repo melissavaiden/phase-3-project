@@ -1,14 +1,13 @@
 import React from "react";
 
-function FoodCard({foodItems, deleteFoodItem}) {
+function FoodCard({foodItems}) {
 
     function handleDelete(e) {
         fetch(`http://localhost:9292/food/${e.target.id}`, {
             method: "DELETE",
           })
             .then((r) => r.json())
-            .then(() => console.log('deleted!'));
-        deleteFoodItem();
+            .then(() => console.log(foodItems));
     }
 
     let foodCard = foodItems.map((food) => {

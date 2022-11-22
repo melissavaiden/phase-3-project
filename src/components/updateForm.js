@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 
-function FoodForm({user, addFood}) {
+function updateForm() {
     const [newFoodItem, setNewFoodItem] = useState({
         id:"",
         name:"",
@@ -8,48 +8,10 @@ function FoodForm({user, addFood}) {
         category:"",
         description:"",
         username:"",
-        picture_url:""
+        pictureUrl:""
     })
 
 
-    const users = user.map((person) => {
-        return <option key={person.id} value={person.id}>{person.username}</option>
-    })
-
-    function handleChange(e) {
-        console.log(e.target.value)
-        setNewFoodItem({
-            ...newFoodItem,
-            [e.target.name] : e.target.value
-        })
-    }
-
-    function handleUserChange(e) {
-        setNewFoodItem({
-            ...newFoodItem,
-            [e.target.name] : e.target.value
-        })
-    }
-
-    function handleSubmit() {
-        fetch("http://localhost:9292/food", {
-            method: "POST",
-           headers: {
-                "Content-Type": "application/json",
-               },
-           body: JSON.stringify({
-               "name" : newFoodItem.name,
-               "price" : newFoodItem.price,
-               "category" : newFoodItem.category,
-               "description" : newFoodItem.description,
-               "user_id" : newFoodItem.username,
-               "picture_url" : newFoodItem.picture_url
-           })
-        })
-        .then((r) => r.json())
-        .then((newFoodItem) => addFood(newFoodItem))
-    }
-    
     return (
         <div>
             <h1>FOOD FORM</h1>
@@ -84,7 +46,7 @@ function FoodForm({user, addFood}) {
                 <br></br>
                 <label className='selection'>
                     Picture URL:
-                    <input className='inputs' type='string' name='picture_url' onChange={handleChange}></input>
+                    <input className='inputs' type='text' name='picture_url' onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <button type='submit'>Submit</button>
@@ -92,6 +54,7 @@ function FoodForm({user, addFood}) {
 
         </div>
     )
+
 }
 
-export default FoodForm;
+export default updateForm;
