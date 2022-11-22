@@ -31,6 +31,11 @@ function handleAddFoodItem(newFoodItem) {
   setFoodItems([...foodItems, newFoodItem])
 }
 
+function handleDeleteFoodItem(deletedItem) {
+  const updatedList = foodItems.filter((foodItem) => deletedItem.id !== foodItem.id)
+  setFoodItems(updatedList)
+}
+
 
 
   return (
@@ -39,7 +44,7 @@ function handleAddFoodItem(newFoodItem) {
   <NavBar />
     <Switch>
       <Route exact path="/food/categories">
-        <FoodSelections changeCategory={changeCategory} foodItems={foodItems}/>
+        <FoodSelections changeCategory={changeCategory} foodItems={foodItems} deleteFood={handleDeleteFoodItem}/>
       </Route>
       <Route  exact path="/foodform">
         <FoodForm user={user} addFood={handleAddFoodItem}/>

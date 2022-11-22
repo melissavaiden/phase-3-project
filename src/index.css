@@ -53,5 +53,7 @@ body {
 
 .foodCard {
   width: 200px;
+  float: left;
+  padding: 10px;
   
 }
