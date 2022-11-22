@@ -11,7 +11,6 @@ function FoodForm({user, addFood}) {
         pictureUrl:""
     })
 
-    console.log(newFoodItem)
 
     const users = user.map((person) => {
         return <option key={person.id} value={person.id}>{person.username}</option>
@@ -25,7 +24,6 @@ function FoodForm({user, addFood}) {
     }
 
     function handleUserChange(e) {
-        console.log(e.target.value)
         setNewFoodItem({
             ...newFoodItem,
             [e.target.name] : e.target.value
@@ -40,7 +38,7 @@ function FoodForm({user, addFood}) {
                },
            body: JSON.stringify({
                "name" : newFoodItem.name,
-               "time" : newFoodItem.price,
+               "price" : newFoodItem.price,
                "category" : newFoodItem.category,
                "description" : newFoodItem.description,
                "user_id" : newFoodItem.username,
@@ -54,7 +52,7 @@ function FoodForm({user, addFood}) {
     return (
         <div>
             <h1>FOOD FORM</h1>
-            <form className='form' >
+            <form className='form' onSubmit={handleSubmit} >
                 <h1>Share your Food!</h1>
                 <label className='selection'>
                     Food Item Name:
@@ -85,7 +83,7 @@ function FoodForm({user, addFood}) {
                 <br></br>
                 <label className='selection'>
                     Picture URL:
-                    <input className='inputs' type='url' name='picture_url' onChange={handleChange}></input>
+                    <input className='inputs' type='text' name='picture_url' onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <button type='submit'>Submit</button>

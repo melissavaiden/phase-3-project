@@ -31,6 +31,12 @@ function handleAddFoodItem(newFoodItem) {
   setFoodItems([...foodItems, newFoodItem])
 }
 
+function handleDeleteFoodItem() {
+  fetch("http://localhost:9292/food")
+  .then((r) => r.json())
+  .then((foodFromDB) => setFoodItems(foodFromDB))
+}
+
 
 
   return (
@@ -39,7 +45,7 @@ function handleAddFoodItem(newFoodItem) {
   <NavBar />
     <Switch>
       <Route exact path="/food/categories">
-        <FoodSelections changeCategory={changeCategory} foodItems={foodItems}/>
+        <FoodSelections changeCategory={changeCategory} foodItems={foodItems} deleteFoodItem={handleDeleteFoodItem}/>
       </Route>
       <Route  exact path="/foodform">
         <FoodForm user={user} addFood={handleAddFoodItem}/>

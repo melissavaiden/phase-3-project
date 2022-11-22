@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import FoodCard from "./foodCard";
 
-function FoodSelections({changeCategory, foodItems}) {
+function FoodSelections({changeCategory, foodItems, deleteFoodItem}) {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function FoodSelections({changeCategory, foodItems}) {
         <div>
             <button className="catButton" onClick={displayAll}>All</button>
             {categoryNavButtons}
-            <FoodCard foodItems={foodItems}/>
+            <FoodCard foodItems={foodItems} deleteFoodItem={deleteFoodItem}/>
         </div>
     )
 

@@ -5,10 +5,10 @@
 
 body {
   background-color: lightblue;
-  text-align: center;
   font-variant: normal;
   text-transform: none;
-
+  text-align: center;
+  align-items: center;
 }
 
 .links {
@@ -49,4 +49,9 @@ body {
 .description {
   height: 100px;
   width: 200px;
+}
+
+.foodCard {
+  width: 200px;
+  
 }
