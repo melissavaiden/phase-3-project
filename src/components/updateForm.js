@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-function updateForm() {
-    const [newFoodItem, setNewFoodItem] = useState({
+function UpdateForm({user, updateFood}) {
+    const [updatedItem, setUpdatedItem] = useState({
         id:"",
         name:"",
         price:"",
@@ -11,12 +11,36 @@ function updateForm() {
         pictureUrl:""
     })
 
+    function handleChange(e) {
+        console.log(updatedItem)
+        setUpdatedItem({
+            ...updatedItem,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    // function handleUpdate(e) {
+    //     fetch(`http://localhost:9292/questions/${e.target.id}`, {
+    //         method: "PATCH",
+    //         Headers:
+    //         { "Content-Type": "application/json" },
+    //         Body: JSON.stringify({
+    //           "correctIndex": e.target.value})
+    //       })
+    //         .then((r) => r.json())
+    //         .then(() => console.log("updated!", e.target.value));
+    // }
+
+    const users = user.map((person) => {
+        return <option key={person.id} value={person.id}>{person.username}</option>
+    })
+
+
 
     return (
         <div>
-            <h1>FOOD FORM</h1>
-            <form className='form' onSubmit={handleSubmit} >
-                <h1>Share your Food!</h1>
+            <h1>Update this Item</h1>
+            <form className='form'>
                 <label className='selection'>
                     Food Item Name:
                     <input className='inputs' type='string' name='name' onChange={handleChange}></input>
@@ -39,7 +63,7 @@ function updateForm() {
                 <br></br>
                 <label className='selection'>
                     Username:
-                    <select className='inputs' name='username' onChange={handleUserChange}>
+                    <select className='inputs' name='username' onChange={handleChange}>
                         {users}
                     </select>
                 </label>
@@ -49,7 +73,7 @@ function updateForm() {
                     <input className='inputs' type='text' name='picture_url' onChange={handleChange}></input>
                 </label>
                 <br></br>
-                <button type='submit'>Submit</button>
+                <button type='submit'>Update</button>
             </form>
 
         </div>
@@ -57,4 +81,4 @@ function updateForm() {
 
 }
 
-export default updateForm;
+export default UpdateForm;

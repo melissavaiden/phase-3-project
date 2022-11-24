@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import FoodForm from './components/FoodForm';
 import FoodSelections from './components/FoodSelections';
 import NavBar from './components/NavBar';
+import UpdateForm from './components/updateForm';
 
 function App() {
   const [foodItems, setFoodItems] = useState([])
   const [user, setUser] = useState([])
+  const [updateFoodItem, setUpdateFoodItem] = useState(null)
 
   useEffect(() => {
     fetch("http://localhost:9292/users")
@@ -36,6 +38,10 @@ function handleDeleteFoodItem(deletedItem) {
   setFoodItems(updatedList)
 }
 
+function handleUpdateClick(updatedFoodItem) {
+  setUpdateFoodItem(updatedFoodItem.id)    
+}
+
 
 
   return (
@@ -44,15 +50,17 @@ function handleDeleteFoodItem(deletedItem) {
   <NavBar />
     <Switch>
       <Route exact path="/food/categories">
-        <FoodSelections changeCategory={changeCategory} foodItems={foodItems} deleteFood={handleDeleteFoodItem}/>
+        <FoodSelections changeCategory={changeCategory} foodItems={foodItems} deleteFood={handleDeleteFoodItem} updateFood={handleUpdateClick}/>
       </Route>
       <Route  exact path="/foodform">
         <FoodForm user={user} addFood={handleAddFoodItem}/>
       </Route>
+      <Route>
+        <UpdateForm path="/updateForm" foodItems={foodItems} user={user}/>
+      </Route>
       <Route path="/">
         <Home />
       </Route>
-  
     </Switch>
   </>
 

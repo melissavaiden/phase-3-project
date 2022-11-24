@@ -1,6 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-function FoodCard({foodItems, deleteFood}) {
+function FoodCard({foodItems, deleteFood, updateFood}) {
 
     function handleDelete(e) {
         fetch(`http://localhost:9292/food/${e.target.id}`, {
@@ -9,6 +10,7 @@ function FoodCard({foodItems, deleteFood}) {
             .then((r) => r.json())
             .then((r) => deleteFood(r));
     }
+
 
     let foodCard = foodItems.map((food) => {
         return (
@@ -19,7 +21,9 @@ function FoodCard({foodItems, deleteFood}) {
             <p>{food.category}</p>
             <p>{food.description}</p>
             <button id={food.id} onClick={handleDelete}>Delete</button>
-            <button>Edit</button>
+            <NavLink to='/updateForm'>
+                <button id={food.id} onClick={updateFood(food)}>Edit</button>
+            </NavLink>
         </div>
      )})
 
