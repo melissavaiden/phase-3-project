@@ -21,7 +21,7 @@ function FoodSelections({changeCategory, foodItems, deleteFood, updateFood}) {
 
 
     let categoryNavButtons = categories.map((cat) => {
-       return <button className="catButton" onClick={handleClick} key={cat.id}>{cat}</button>
+       return <button className="catButton" onClick={handleClick} key={cat}>{cat}</button>
     })
 
     return (

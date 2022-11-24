@@ -20,8 +20,9 @@ function UpdateForm({user, editItem}) {
         console.log(updatedItem)
     }
 
-    function handleUpdate() {
-        console.log(updatedItem)
+    function handleUpdateSubmit() {
+        // const index = foodItems.findIndex((food) => food.id === updatedItem.id)
+        // console.log(index)
     }
 
     const users = user.map((person) => {
@@ -33,7 +34,7 @@ function UpdateForm({user, editItem}) {
     return (
         <div>
             <h1>Update this Item</h1>
-            <form className='form' onSubmit={handleUpdate}>
+            <form className='form' onSubmit={handleUpdateSubmit}>
                 <label className='selection'>
                     Food Item Name:
                     <input className='inputs' type='string' name='name' placeholder={editItem.name} onChange={handleChange}></input>
@@ -57,7 +58,7 @@ function UpdateForm({user, editItem}) {
                 <label className='selection'>
                     Username:
                     <select className='inputs' name='username' placeholder={editItem.username} onChange={handleChange}>
-                        <option value={editItem.username}>{editItem.username}</option>
+                        <option placeholder={editItem.username} value={editItem.id}>{editItem.username}</option>
                         {users}
                     </select>
                 </label>

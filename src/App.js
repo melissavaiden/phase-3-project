@@ -57,7 +57,6 @@ function handleUpdateClick(updatedFoodItem) {
     picture_url: updatedFoodItem.picture_url
   }
   setEditItem(formValues)
-  console.log(editItem)
 }
 
 
@@ -77,7 +76,7 @@ function handleUpdateClick(updatedFoodItem) {
         <FoodForm user={user} addFood={handleAddFoodItem}/>
       </Route>
       <Route>
-        <UpdateForm exact path="/updateForm" editItem={editItem} user={user} />
+        <UpdateForm exact path="/updateForm" editItem={editItem} foodItems={foodItems} user={user} />
       </Route>
     </Switch>
   </>
