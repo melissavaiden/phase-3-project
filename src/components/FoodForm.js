@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { NavLink } from 'react-router-dom';
 
 function FoodForm({user, addFood}) {
     const [newFoodItem, setNewFoodItem] = useState({
@@ -87,7 +88,9 @@ function FoodForm({user, addFood}) {
                     <input className='inputs' type='string' name='picture_url' onChange={handleChange}></input>
                 </label>
                 <br></br>
+                <NavLink to='/food/categories'>
                 <button type='submit'>Submit</button>
+                </NavLink>
             </form>
 
         </div>

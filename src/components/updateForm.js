@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { NavLink } from "react-router-dom";
 
 function UpdateForm({user, editItem}) {
     const [updatedItem, setUpdatedItem] = useState({
@@ -12,24 +13,16 @@ function UpdateForm({user, editItem}) {
     })
 
     function handleChange(e) {
-        console.log(updatedItem)
         setUpdatedItem({
             ...updatedItem,
             [e.target.name] : e.target.value
         })
+        console.log(updatedItem)
     }
 
-    // function handleUpdate(e) {
-    //     fetch(`http://localhost:9292/food/${e.target.id}`, {
-    //         method: "PATCH",
-    //         Headers:
-    //         { "Content-Type": "application/json" },
-    //         Body: JSON.stringify({
-    //           "correctIndex": e.target.value})
-    //       })
-    //         .then((r) => r.json())
-    //         .then(() => console.log("updated!", e.target.value));
-    // }
+    function handleUpdate() {
+        console.log(updatedItem)
+    }
 
     const users = user.map((person) => {
         return <option key={person.id} value={person.id}>{person.username}</option>
@@ -40,30 +33,30 @@ function UpdateForm({user, editItem}) {
     return (
         <div>
             <h1>Update this Item</h1>
-            <form className='form'>
+            <form className='form' onSubmit={handleUpdate}>
                 <label className='selection'>
                     Food Item Name:
-                    <input className='inputs' type='string' name='name' value={editItem.name} onChange={handleChange}></input>
+                    <input className='inputs' type='string' name='name' placeholder={editItem.name} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Price:
-                    <input className='inputs' type='number' name='price' value={editItem.price} onChange={handleChange}></input>
+                    <input className='inputs' type='number' name='price' placeholder={editItem.price} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Category:
-                    <input className='inputs' type='string' name='category' value={editItem.category} onChange={handleChange}></input>
+                    <input className='inputs' type='string' name='category' placeholder={editItem.category} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Description:
-                    <input className='inputs description' type='string' name='description' value={editItem.description} onChange={handleChange}></input>
+                    <input className='inputs description' type='string' name='description' placeholder={editItem.description} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Username:
-                    <select className='inputs' name='username' value={editItem.username} onChange={handleChange}>
+                    <select className='inputs' name='username' placeholder={editItem.username} onChange={handleChange}>
                         <option value={editItem.username}>{editItem.username}</option>
                         {users}
                     </select>
@@ -71,10 +64,12 @@ function UpdateForm({user, editItem}) {
                 <br></br>
                 <label className='selection'>
                     Picture URL:
-                    <input className='inputs' type='text' name='picture_url' value={editItem.pictureUrl} onChange={handleChange}></input>
+                    <input className='inputs' type='string' name='picture_url' placeholder={editItem.picture_url} onChange={handleChange}></input>
                 </label>
                 <br></br>
+                <NavLink to='/food/categories'>
                 <button type='submit'>Update</button>
+                </NavLink>
             </form>
 
         </div>

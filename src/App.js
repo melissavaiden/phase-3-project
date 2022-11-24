@@ -57,7 +57,7 @@ function handleUpdateClick(updatedFoodItem) {
     picture_url: updatedFoodItem.picture_url
   }
   setEditItem(formValues)
-  console.log(editItem.username)
+  console.log(editItem)
 }
 
 
