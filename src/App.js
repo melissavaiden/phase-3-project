@@ -9,7 +9,15 @@ import UpdateForm from './components/updateForm';
 function App() {
   const [foodItems, setFoodItems] = useState([])
   const [user, setUser] = useState([])
-  const [updateFoodItem, setUpdateFoodItem] = useState(null)
+  const [editItem, setEditItem] = useState({
+    id:"",
+    name:"",
+    price:"",
+    category:"",
+    description:"",
+    username:"",
+    picture_url:""
+})
 
   useEffect(() => {
     fetch("http://localhost:9292/users")
@@ -38,18 +46,18 @@ function handleDeleteFoodItem(deletedItem) {
   setFoodItems(updatedList)
 }
 
-function handleUpdateClick(e, updatedFoodItem) {
-  e.preventDefault();
-  setUpdateFoodItem(updatedFoodItem.id)  
-  
+function handleUpdateClick(updatedFoodItem) {  
   const formValues = {
+    id: updatedFoodItem.id,
     name: updatedFoodItem.name,
     price: updatedFoodItem.price,
     category: updatedFoodItem.category,
     description: updatedFoodItem.description,
-    username: updatedFoodItem.username,
-    pictureUrl: updatedFoodItem.pictureUrl
+    username: updatedFoodItem.user.username,
+    picture_url: updatedFoodItem.picture_url
   }
+  setEditItem(formValues)
+  console.log(editItem.username)
 }
 
 
@@ -69,7 +77,7 @@ function handleUpdateClick(e, updatedFoodItem) {
         <FoodForm user={user} addFood={handleAddFoodItem}/>
       </Route>
       <Route>
-        <UpdateForm exact path="/updateForm" foodItems={foodItems} user={user}/>
+        <UpdateForm exact path="/updateForm" editItem={editItem} user={user} />
       </Route>
     </Switch>
   </>

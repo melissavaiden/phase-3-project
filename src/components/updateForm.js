@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function UpdateForm({user}) {
+function UpdateForm({user, editItem}) {
     const [updatedItem, setUpdatedItem] = useState({
         id:"",
         name:"",
@@ -8,7 +8,7 @@ function UpdateForm({user}) {
         category:"",
         description:"",
         username:"",
-        pictureUrl:""
+        picture_url:""
     })
 
     function handleChange(e) {
@@ -43,34 +43,35 @@ function UpdateForm({user}) {
             <form className='form'>
                 <label className='selection'>
                     Food Item Name:
-                    <input className='inputs' type='string' name='name' onChange={handleChange}></input>
+                    <input className='inputs' type='string' name='name' value={editItem.name} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Price:
-                    <input className='inputs' type='number' name='price' onChange={handleChange}></input>
+                    <input className='inputs' type='number' name='price' value={editItem.price} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Category:
-                    <input className='inputs' type='string' name='category' onChange={handleChange}></input>
+                    <input className='inputs' type='string' name='category' value={editItem.category} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Description:
-                    <input className='inputs description' type='string' name='description' onChange={handleChange}></input>
+                    <input className='inputs description' type='string' name='description' value={editItem.description} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Username:
-                    <select className='inputs' name='username' onChange={handleChange}>
+                    <select className='inputs' name='username' value={editItem.username} onChange={handleChange}>
+                        <option value={editItem.username}>{editItem.username}</option>
                         {users}
                     </select>
                 </label>
                 <br></br>
                 <label className='selection'>
                     Picture URL:
-                    <input className='inputs' type='text' name='picture_url' onChange={handleChange}></input>
+                    <input className='inputs' type='text' name='picture_url' value={editItem.pictureUrl} onChange={handleChange}></input>
                 </label>
                 <br></br>
                 <button type='submit'>Update</button>
