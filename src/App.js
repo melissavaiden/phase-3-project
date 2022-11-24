@@ -38,8 +38,18 @@ function handleDeleteFoodItem(deletedItem) {
   setFoodItems(updatedList)
 }
 
-function handleUpdateClick(updatedFoodItem) {
-  setUpdateFoodItem(updatedFoodItem.id)    
+function handleUpdateClick(e, updatedFoodItem) {
+  e.preventDefault();
+  setUpdateFoodItem(updatedFoodItem.id)  
+  
+  const formValues = {
+    name: updatedFoodItem.name,
+    price: updatedFoodItem.price,
+    category: updatedFoodItem.category,
+    description: updatedFoodItem.description,
+    username: updatedFoodItem.username,
+    pictureUrl: updatedFoodItem.pictureUrl
+  }
 }
 
 
@@ -49,6 +59,9 @@ function handleUpdateClick(updatedFoodItem) {
   <h1>Home Chef</h1>
   <NavBar />
     <Switch>
+      <Route exact path="/food">
+        <Home />
+      </Route>
       <Route exact path="/food/categories">
         <FoodSelections changeCategory={changeCategory} foodItems={foodItems} deleteFood={handleDeleteFoodItem} updateFood={handleUpdateClick}/>
       </Route>
@@ -56,10 +69,7 @@ function handleUpdateClick(updatedFoodItem) {
         <FoodForm user={user} addFood={handleAddFoodItem}/>
       </Route>
       <Route>
-        <UpdateForm path="/updateForm" foodItems={foodItems} user={user}/>
-      </Route>
-      <Route path="/">
-        <Home />
+        <UpdateForm exact path="/updateForm" foodItems={foodItems} user={user}/>
       </Route>
     </Switch>
   </>

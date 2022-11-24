@@ -22,7 +22,7 @@ function FoodCard({foodItems, deleteFood, updateFood}) {
             <p>{food.description}</p>
             <button id={food.id} onClick={handleDelete}>Delete</button>
             <NavLink to='/updateForm'>
-                <button id={food.id} onClick={updateFood(food)}>Edit</button>
+                <button id={food.id} onClick={(e) => updateFood(food)}>Edit</button>
             </NavLink>
         </div>
      )})

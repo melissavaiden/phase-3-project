@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function UpdateForm({user, updateFood}) {
+function UpdateForm({user}) {
     const [updatedItem, setUpdatedItem] = useState({
         id:"",
         name:"",
@@ -20,7 +20,7 @@ function UpdateForm({user, updateFood}) {
     }
 
     // function handleUpdate(e) {
-    //     fetch(`http://localhost:9292/questions/${e.target.id}`, {
+    //     fetch(`http://localhost:9292/food/${e.target.id}`, {
     //         method: "PATCH",
     //         Headers:
     //         { "Content-Type": "application/json" },
