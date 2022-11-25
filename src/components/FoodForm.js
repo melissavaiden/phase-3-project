@@ -88,9 +88,7 @@ function FoodForm({user, addFood}) {
                     <input className='inputs' type='string' name='picture_url' onChange={handleChange}></input>
                 </label>
                 <br></br>
-                <NavLink to='/food/categories'>
-                <button type='submit'>Submit</button>
-                </NavLink>
+÷                <button type='submit'>Submit</button>
             </form>
 
         </div>

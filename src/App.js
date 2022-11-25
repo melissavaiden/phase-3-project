@@ -9,13 +9,13 @@ import UpdateForm from './components/updateForm';
 function App() {
   const [foodItems, setFoodItems] = useState([])
   const [user, setUser] = useState([])
+  const [editItemId, setEditItemId] = useState(null)
   const [editItem, setEditItem] = useState({
     id:"",
     name:"",
     price:"",
     category:"",
     description:"",
-    username:"",
     picture_url:""
 })
 
@@ -47,13 +47,13 @@ function handleDeleteFoodItem(deletedItem) {
 }
 
 function handleUpdateClick(updatedFoodItem) {  
+  setEditItemId(updatedFoodItem.id)
   const formValues = {
     id: updatedFoodItem.id,
     name: updatedFoodItem.name,
     price: updatedFoodItem.price,
     category: updatedFoodItem.category,
     description: updatedFoodItem.description,
-    username: updatedFoodItem.user.username,
     picture_url: updatedFoodItem.picture_url
   }
   setEditItem(formValues)
@@ -76,7 +76,7 @@ function handleUpdateClick(updatedFoodItem) {
         <FoodForm user={user} addFood={handleAddFoodItem}/>
       </Route>
       <Route>
-        <UpdateForm exact path="/updateForm" editItem={editItem} foodItems={foodItems} user={user} />
+        <UpdateForm exact path="/updateForm" editItem={editItem} foodItems={foodItems} user={user} foodId={editItemId}/>
       </Route>
     </Switch>
   </>

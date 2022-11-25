@@ -17,12 +17,12 @@ function FoodCard({foodItems, deleteFood, updateFood}) {
         <div key={food.id} className="foodCard">
             <img className='food_url' src={food.picture_url}></img>
             <h2>{food.name}---{food.price}</h2>
-            {/* <h3>{food.user.username}</h3> */}
+            {/* <h3>{food.user}</h3> */}
             <p>{food.category}</p>
             <p>{food.description}</p>
             <button id={food.id} onClick={handleDelete}>Delete</button>
             <NavLink to='/updateForm'>
-                <button id={food.id} onClick={(e) => updateFood(food)}>Edit</button>
+                <button id={food.id} onClick={() => updateFood(food)}>Edit</button>
             </NavLink>
         </div>
      )})

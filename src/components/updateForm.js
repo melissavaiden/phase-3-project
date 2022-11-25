@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
 
-function UpdateForm({user, editItem}) {
+function UpdateForm({user, editItem, handleUpdateSubmit}) {
     const [updatedItem, setUpdatedItem] = useState({
-        id:"",
-        name:"",
-        price:"",
-        category:"",
-        description:"",
-        username:"",
-        picture_url:""
+        id: editItem.id,
+        name:editItem.name,
+        price:editItem.price,
+        category:editItem.category,
+        description:editItem.description,
+        username:editItem.user,
+        picture_url:editItem.picture_url
     })
 
     function handleChange(e) {
@@ -18,16 +18,31 @@ function UpdateForm({user, editItem}) {
             [e.target.name] : e.target.value
         })
         console.log(updatedItem)
-    }
+       }
 
-    function handleUpdateSubmit() {
-        // const index = foodItems.findIndex((food) => food.id === updatedItem.id)
-        // console.log(index)
-    }
 
     const users = user.map((person) => {
         return <option key={person.id} value={person.id}>{person.username}</option>
     })
+
+    function handleUpdateSubmit() {      
+        fetch(`http://localhost:9292/food/${updatedItem.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            "name" : updatedItem.name,
+            "price" : updatedItem.price,
+            "category" : updatedItem.category,
+            "description" : updatedItem.description,
+            // "user_id" : updatedItem.username,
+            "picture_url" : updatedItem.picture_url
+          }),
+        })
+          .then((r) => r.json())
+          .then((updatedItem) => console.log(updatedItem));
+      }
 
 
 
@@ -56,21 +71,11 @@ function UpdateForm({user, editItem}) {
                 </label>
                 <br></br>
                 <label className='selection'>
-                    Username:
-                    <select className='inputs' name='username' placeholder={editItem.username} onChange={handleChange}>
-                        <option placeholder={editItem.username} value={editItem.id}>{editItem.username}</option>
-                        {users}
-                    </select>
-                </label>
-                <br></br>
-                <label className='selection'>
                     Picture URL:
                     <input className='inputs' type='string' name='picture_url' placeholder={editItem.picture_url} onChange={handleChange}></input>
                 </label>
                 <br></br>
-                <NavLink to='/food/categories'>
                 <button type='submit'>Update</button>
-                </NavLink>
             </form>
 
         </div>
