@@ -54,6 +54,7 @@ function handleUpdateClick(updatedFoodItem) {
     price: updatedFoodItem.price,
     category: updatedFoodItem.category,
     description: updatedFoodItem.description,
+    username: updatedFoodItem.username,
     picture_url: updatedFoodItem.picture_url
   }
   setEditItem(formValues)

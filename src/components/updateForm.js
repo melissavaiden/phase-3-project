@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { NavLink } from "react-router-dom";
 
 function UpdateForm({user, editItem, handleUpdateSubmit}) {
     const [updatedItem, setUpdatedItem] = useState({
@@ -8,16 +7,16 @@ function UpdateForm({user, editItem, handleUpdateSubmit}) {
         price:editItem.price,
         category:editItem.category,
         description:editItem.description,
-        username:editItem.user,
+        username:editItem.username,
         picture_url:editItem.picture_url
     })
 
     function handleChange(e) {
+        console.log(e.target.value)
         setUpdatedItem({
             ...updatedItem,
             [e.target.name] : e.target.value
         })
-        console.log(updatedItem)
        }
 
 
@@ -36,7 +35,7 @@ function UpdateForm({user, editItem, handleUpdateSubmit}) {
             "price" : updatedItem.price,
             "category" : updatedItem.category,
             "description" : updatedItem.description,
-            // "user_id" : updatedItem.username,
+            "user_id" : updatedItem.username,
             "picture_url" : updatedItem.picture_url
           }),
         })
@@ -71,11 +70,19 @@ function UpdateForm({user, editItem, handleUpdateSubmit}) {
                 </label>
                 <br></br>
                 <label className='selection'>
+                    Username:
+                    <select className='inputs' name='username' placeholder={editItem.username} onChange={handleChange}>
+                        <option value={editItem.username}>{editItem.username}</option>
+                        {users}
+                    </select>
+                </label>
+                <br></br>
+                <label className='selection'>
                     Picture URL:
                     <input className='inputs' type='string' name='picture_url' placeholder={editItem.picture_url} onChange={handleChange}></input>
                 </label>
                 <br></br>
-                <button type='submit'>Update</button>
+                    <button type='submit'>Update</button>
             </form>
 
         </div>

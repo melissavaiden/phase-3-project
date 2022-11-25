@@ -26,6 +26,7 @@ function FoodForm({user, addFood}) {
     }
 
     function handleUserChange(e) {
+        console.log(e.target.value)
         setNewFoodItem({
             ...newFoodItem,
             [e.target.name] : e.target.value
@@ -79,6 +80,7 @@ function FoodForm({user, addFood}) {
                 <label className='selection'>
                     Username:
                     <select className='inputs' name='username' onChange={handleUserChange}>
+                        <option>Choose User</option>
                         {users}
                     </select>
                 </label>
