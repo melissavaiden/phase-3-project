@@ -57,3 +57,7 @@ body {
   padding: 10px;
   
 }
+
+.usernameForCard {
+  font-style: italic;
+}

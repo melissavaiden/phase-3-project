@@ -17,7 +17,7 @@ function FoodCard({foodItems, deleteFood, updateFood}) {
         <div key={food.id} className="foodCard">
             <img className='food_url' src={food.picture_url}></img>
             <h2>{food.name}---{food.price}</h2>
-            {/* <h3>{food.user}</h3> */}
+            <h4 className="usernameForCard">Cooked by:{food.user.username}</h4>
             <p>{food.category}</p>
             <p>{food.description}</p>
             <button id={food.id} onClick={handleDelete}>Delete</button>
