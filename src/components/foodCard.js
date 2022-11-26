@@ -16,9 +16,10 @@ function FoodCard({foodItems, deleteFood, updateFood}) {
         return (
         <div key={food.id} className="foodCard">
             <img className='food_url' src={food.picture_url}></img>
-            <h2>{food.name}---{food.price}</h2>
-            <h4 className="usernameForCard">Cooked by:{food.user.username}</h4>
-            <p>{food.category}</p>
+            <h2 className="foodCardTitle">{food.name}</h2>
+            <h2>${food.price}</h2>
+            <h4 className="foodCardUsername">Cooked by: {food.user.username}</h4>
+            <p className="foodCardCategory">{food.category}</p>
             <p>{food.description}</p>
             <button id={food.id} onClick={handleDelete}>Delete</button>
             <NavLink to='/updateForm'>

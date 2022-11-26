@@ -58,6 +58,15 @@ body {
   
 }
 
-.usernameForCard {
+.foodCardUsername {
   font-style: italic;
+  background-color: white;
+}
+
+.foodCardTitle {
+  text-decoration: underline;
+}
+
+.foodCardCategory {
+  font-weight: bold;
 }
